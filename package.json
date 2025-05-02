@@ -1,11 +1,5 @@
 {
-  "name": "tinder",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Arvind Tiwaari",
-  "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
