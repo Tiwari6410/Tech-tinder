@@ -1,20 +1,22 @@
 const express = require("express")
 const app = express();
-//sending query from url
-
-//URL : localhost:7000/user?userId=45645
-// app.get("/user", (req, res) => {
-//     console.log(req.query)
-//     res.send({ firstName: "Arvind", lastName: "Tiwari" })
-// })
 
 
-//sending params through url
-
-//URL : localhost:7000/user/6054/arvind/989898999
-app.get("/user/:userId/:name/:password", (req, res) => {
-    console.log(req.params)
-    res.send({ firstName: "Arvind", lastName: "Tiwari" })
+app.get("/user", (req, res, next) => {
+    console.log("Route 1 running")
+    next()
+    // res.send("router1 successfully running ")
+}, (req, res, next) => {
+    console.log("router 2 running")
+    // res.send("router2 successfully running")
+    next()
+}, (req, res, next) => {
+    console.log("rounter3rd running")
+    next()
+    // res.send({ first: "Arvind", last: "tiwari" })
+}, (req, res) => {
+    console.log("4th route handler running")
+    res.send("Route 4th handler successfully running")
 })
 
 
