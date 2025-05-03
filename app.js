@@ -1,14 +1,18 @@
 const express = require("express")
 const app = express();
 
-app.get("/", (req, res) => {
-    res.send("Hy i am from home page ")
+app.get("/user", (req, res) => {
+    res.send({ firstName: "Arvind", lastName: "Tiwari" })
 })
-app.use("/test", (req, res) => {
-    res.send("Hy i am from Test page ")
+
+app.post("/user", (req, res) => {
+    res.send("Post Api successfully Calling...")
 })
-app.use("/contact", (req, res) => {
-    res.send("Hy i am from contact page ")
+app.delete("/user", (req, res) => {
+    res.send("user Data deleted successfully ")
+})
+app.patch("/user", (req, res) => {
+    res.send("user Patch Api successfully ")
 })
 
 app.listen(7000, () => {
