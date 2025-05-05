@@ -1,23 +1,31 @@
-const express = require("express")
+const express = require("express");
+const { authAdmin } = require("./src/middleware/auth");
+const { userAuth } = require("./src/middleware/auth");
 const app = express();
 
 
-app.get("/user", (req, res, next) => {
-    console.log("Route 1 running")
-    next()
-    // res.send("router1 successfully running ")
-}, [(req, res, next) => {
-    console.log("router 2 running")
-    // res.send("router2 successfully running")
-    next()
-}, (req, res, next) => {
-    console.log("rounter3rd running")
-    next()
-    // res.send({ first: "Arvind", last: "tiwari" })
-}], (req, res) => {
-    console.log("4th route handler running")
-    res.send("Route 4th handler successfully running")
+
+
+app.use("/admin", authAdmin);
+
+app.get("/user", userAuth, (req, res) => {
+    res.send("user data sent successfully")
 })
+
+app.get("/admin/contact", (req, res) => {
+    res.send("All contact has been sented out")
+})
+
+app.get("/admin/getAllData", (req, res) => {
+    res.send("All data Send");
+})
+
+
+app.post("/user/login", (req, res) => {
+    res.send("User logged in successfully")
+})
+
+
 
 
 
