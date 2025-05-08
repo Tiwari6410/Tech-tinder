@@ -5,6 +5,7 @@ const authAdmin = (req, res, next) => {
         res.status(401).send("unAutherized admin has been found")
     } else {
         next()
+        // res.send("superman............................")
     }
 
 }

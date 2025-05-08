@@ -31,3 +31,8 @@
 - Differences app.use and app.all ?
 - Write a dummy auth middleware for admin?
 - Write a dummy auth middleware for all user routes, except /user/login ?
+
+- username : arvindtwr6410
+- password : t7iM5QDWuBmcIcYt
+- connection string : mongodb+srv://arvindtwr6410:t7iM5QDWuBmcIcYt@techtinder.yrmwofk.mongodb.net/
+  -connection string 2 : mongodb+srv://arvindtwr6410:t7iM5QDWuBmcIcYt@techtinder.yrmwofk.mongodb.net/?retryWrites=true&w=majority&appName=techTinder
