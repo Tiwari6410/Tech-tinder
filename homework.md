@@ -31,8 +31,20 @@
 - Differences app.use and app.all ?
 - Write a dummy auth middleware for admin?
 - Write a dummy auth middleware for all user routes, except /user/login ?
+- Error Handling using app.use("/", (err, req, res, next)= {})
+
+- create a free cluster on MongoDb official website (Mongo Atlas).
+- Install mongoose library.
+- Connect your application to the Database
 
 - username : arvindtwr6410
 - password : t7iM5QDWuBmcIcYt
 - connection string : mongodb+srv://arvindtwr6410:t7iM5QDWuBmcIcYt@techtinder.yrmwofk.mongodb.net/
   -connection string 2 : mongodb+srv://arvindtwr6410:t7iM5QDWuBmcIcYt@techtinder.yrmwofk.mongodb.net/?retryWrites=true&w=majority&appName=techTinder
+
+  - search mongoose and > schemas > read more about schemas
+
+  - create a free cluster on mongodb official website (mongo Atlas).
+  - Install mongoose library.
+  - Connect your application "connection-url"/devTinder.
+  - call the connectDB function and connect to database starting application on 7777.
