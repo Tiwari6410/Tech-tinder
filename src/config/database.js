@@ -6,11 +6,7 @@ const connnectDB = async () => {
     )
 };
 
-connnectDB().then(() => {
-    console.log("Database connection is estaiblished")
-}).catch((err) => {
-    console.log("database connot be connected")
-})
+module.exports = connnectDB
 
 
 
