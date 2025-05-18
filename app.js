@@ -1,7 +1,8 @@
 const express = require("express")
 const connectDB = require("./src/config/database");
 const app = express();
-const User = require("./src/models/user")
+const User = require("./src/models/user");
+const { ReturnDocument } = require("mongodb");
 
 app.use(express.json())
 app.post("/signup", async (req, res) => {
@@ -66,13 +67,34 @@ app.delete("/user", async (req, res) => {
 app.patch("/user", async (req, res) => {
     const userId = req.body.userId;
     const data = req.body;
+    // const { userId, ...updates } = req.body;
+
+    // console.log(req.body, "this is a whole object")
+    // console.log(updates, "this is a whole object")
+
 
     try {
-        const user = await User.findByIdAndUpdate({ _id: userId }, data)
+        const ALLOWED_UPDATES = ["userId", "photoUrl", "about", "gender", "age", "skills", "emailId"]
+        // const ALLOWED_UPDATES = ["firstName", "lastName", "age", "skills"]
+        const isUpdatesAllowed = Object.keys(data).every((k) => ALLOWED_UPDATES.includes(k))
+        console.log(isUpdatesAllowed, "isupdatedAllowed")
+        if (!isUpdatesAllowed) {
+            throw new Error("Update not allowed")
+        }
+        if (data?.skills.length > 10) {
+            throw new Error("Skills cannot be more than 10")
+            console.log(data?.skills.length, "skills length")
+        }
+        const user = await User.findByIdAndUpdate({ _id: userId }, data, {
+            returnDocument: "after",
+            // new: true,
+            runValidators: true
+        })
+        // const user = await User.findByIdAndUpdate({ userId }, data)
         console.log(user, "Printed value")
-        res.send("data updated successfullyyyyyy")
+        res.send("data updated successfully")
     } catch (err) {
-        res.status(404).send("something went wronggggggggg ")
+        res.status(404).send("UPDATE FAILED" + err.message)
     }
 })
 
