@@ -49,6 +49,33 @@ app.get("/feed", async (req, res) => {
     }
 })
 
+app.delete("/user", async (req, res) => {
+    const userId = req.body.userId;
+    console.log(userId, "arvindid")
+    try {
+        // const user = await User.findByIdAndDelete({ _id: userId })
+        const user = await User.findByIdAndDelete(userId)
+        console.log(user, "user data ")
+        res.send("delete successfully")
+
+    } catch (err) {
+        res.status(404).send("something went wrong in Api ")
+    }
+})
+
+app.patch("/user", async (req, res) => {
+    const userId = req.body.userId;
+    const data = req.body;
+
+    try {
+        const user = await User.findByIdAndUpdate({ _id: userId }, data)
+        console.log(user, "Printed value")
+        res.send("data updated successfullyyyyyy")
+    } catch (err) {
+        res.status(404).send("something went wronggggggggg ")
+    }
+})
+
 
 connectDB().then(() => {
     console.log("Database connection is estaiblished")
